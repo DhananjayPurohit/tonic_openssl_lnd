@@ -3213,19 +3213,19 @@ message Invoice {
     */
     bytes r_hash = 4;
 
-    /*
-    The value of this invoice in satoshis
-
+    oneof amount {
+        /*
+        The value of this invoice in satoshis
+        */
+        int64 value = 5;
+        /*
+        The value of this invoice in millisatoshis
+        */
+        int64 value_msat = 23;
+    }
+    */
     The fields value and value_msat are mutually exclusive.
     */
-    int64 value = 5;
-
-    /*
-    The value of this invoice in millisatoshis
-
-    The fields value and value_msat are mutually exclusive.
-    */
-    int64 value_msat = 23;
 
     // Whether this invoice has been fulfilled
     bool settled = 6 [deprecated = true];
